@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>About Us - Domain2Cart</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body { background: #111; color: #fff; font-family: Arial, sans-serif; padding: 20px; }
+    h1 { color: #4fc3f7; }
+    a { color: #4fc3f7; text-decoration: none; }
+    .languages { margin-bottom: 20px; }
+    .languages button {
+      margin-right: 10px; padding: 8px 12px;
+      background: #007bff; color: white;
+      border: none; border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="languages">
+    <button onclick="switchLang('en')">English</button>
+    <button onclick="switchLang('ar')">العربية</button>
+    <button onclick="switchLang('fr')">Français</button>
+  </div>
+
+  <h1 data-lang="en">About Us</h1>
+  <h1 data-lang="ar" style="display:none">من نحن</h1>
+  <h1 data-lang="fr" style="display:none">À propos de nous</h1>
+
+  <p data-lang="en">We provide premium and memorable domain names for businesses, startups, and creatives through platforms like Sedo and Afternic.</p>
+  <p data-lang="ar" style="display:none">نحن نوفر أسماء نطاقات مميزة ولا تُنسى للأعمال والشركات الناشئة والمبدعين من خلال منصات مثل Sedo وAfternic.</p>
+  <p data-lang="fr" style="display:none">Nous proposons des noms de domaine premium et mémorables aux entreprises, start-ups et créateurs via des plateformes telles que Sedo et Afternic.</p>
+
+  <p><a href="index.html">← <span data-lang="en">Back to Home</span><span data-lang="ar" style="display:none">العودة للرئيسية</span><span data-lang="fr" style="display:none">Retour à l'accueil</span></a></p>
+
+  <script>
+    function switchLang(lang) {
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.style.display = (el.getAttribute('data-lang') === lang) ? '' : 'none';
+      });
+    }
+    switchLang('en');
+  </script>
+</body>
+</html>
