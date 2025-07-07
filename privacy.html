@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Privacy Policy - Domain2Cart</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body { background: #111; color: #fff; font-family: Arial, sans-serif; padding: 20px; }
+    h1 { color: #4fc3f7; }
+    a { color: #4fc3f7; text-decoration: none; }
+    .languages { margin-bottom: 20px; }
+    .languages button {
+      margin-right: 10px; padding: 8px 12px;
+      background: #007bff; color: white;
+      border: none; border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="languages">
+    <button onclick="switchLang('en')">English</button>
+    <button onclick="switchLang('ar')">العربية</button>
+    <button onclick="switchLang('fr')">Français</button>
+  </div>
+
+  <h1 data-lang="en">Privacy Policy</h1>
+  <h1 data-lang="ar" style="display:none">سياسة الخصوصية</h1>
+  <h1 data-lang="fr" style="display:none">Politique de confidentialité</h1>
+
+  <p data-lang="en">We use Google services such as AdSense and Analytics to enhance the user experience. These services may collect anonymous usage data. No personal information is stored without consent.</p>
+  <p data-lang="ar" style="display:none">نحن نستخدم خدمات Google مثل AdSense وAnalytics لتحسين تجربة المستخدم. قد تقوم هذه الخدمات بجمع بيانات استخدام مجهولة المصدر. لا يتم تخزين أي معلومات شخصية بدون موافقة المستخدم.</p>
+  <p data-lang="fr" style="display:none">Nous utilisons des services Google tels qu'AdSense et Analytics pour améliorer l'expérience utilisateur. Ces services peuvent collecter des données d'utilisation anonymes. Aucune information personnelle n'est stockée sans consentement.</p>
+
+  <p><a href="index.html">← <span data-lang="en">Back to Home</span><span data-lang="ar" style="display:none">العودة للرئيسية</span><span data-lang="fr" style="display:none">Retour à l'accueil</span></a></p>
+
+  <script>
+    function switchLang(lang) {
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.style.display = (el.getAttribute('data-lang') === lang) ? '' : 'none';
+      });
+    }
+    switchLang('en');
+  </script>
+</body>
+</html>
