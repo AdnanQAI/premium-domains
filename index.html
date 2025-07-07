@@ -1,71 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Premium Domains by Adnan</title>
-<style>
-  body { margin:0; font-family:Arial,sans-serif; background:#111; color:#eee; }
-  header { background:#000; padding:20px; text-align:center; }
-  header h1 { margin:0; font-size:2rem; color:gold; }
-  .lang-switch { margin-top:10px; }
-  .lang-switch button { margin:0 5px; padding:5px 10px; border:none; cursor:pointer; border-radius:3px; }
-  .lang-switch button.active { background:gold; color:#000; }
-  .search-area { max-width:800px; margin:20px auto; text-align:center; }
-  .search-area input, .search-area select { padding:8px; margin:5px; border-radius:4px; border:1px solid #555; background:#222; color:#eee; }
-  .grid { display:grid; gap:15px; padding:20px; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); }
-  .domain { background:#1a1a1a; border-left:5px solid gold; padding:15px; border-radius:5px; transition:background.3s }
-  .domain:hover { background:#2a2a2a; }
-  .domain h2 { margin:0 0 5px; color:gold; font-size:1.2rem; }
-  .domain p { margin:0 0 10px; color:#bbb; font-size:0.95rem; }
-  .domain .btn { display:inline-block; padding:8px 12px; background:gold; color:#000; border:none; border-radius:4px; text-decoration:none; font-weight:bold; }
-  footer { text-align:center; padding:30px; border-top:1px solid #333; color:#777; margin-top:40px; }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Adnan Domains</title>
+  <style>
+    body { margin:0; font-family:Arial,sans-serif; background:#111; color:#eee; }
+    header { background:#000; padding:20px; text-align:center; }
+    header h1 { margin:0; font-size:2rem; color:gold; }
+    .lang-switch, .search-area { text-align:center; margin:10px 0; }
+    .lang-switch button {
+      margin:0 5px; padding:5px 10px; border:none;
+      cursor:pointer; border-radius:3px; background:#222; color:#eee;
+    }
+    .lang-switch button.active { background:gold; color:#000; }
+    .search-area input, .search-area select {
+      padding:8px; margin:5px; border-radius:4px;
+      border:1px solid #555; background:#222; color:#eee;
+    }
+    .search-area button {
+      padding:8px 15px; border:none; background:gold;
+      color:#000; border-radius:4px; cursor:pointer;
+    }
+    .grid {
+      display:grid; gap:15px; padding:20px;
+      grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+    }
+    .domain {
+      background:#1a1a1a; border-left:5px solid gold;
+      padding:15px; border-radius:5px; transition:background 0.3s;
+    }
+    .domain:hover { background:#2a2a2a; }
+    .domain h2 { margin:0 0 5px; color:gold; font-size:1.2rem; }
+    .domain p { margin:0 0 10px; color:#bbb; font-size:0.95rem; }
+    .domain .btn {
+      display:inline-block; padding:8px 12px; background:gold;
+      color:#000; border:none; border-radius:4px;
+      text-decoration:none; font-weight:bold;
+    }
+  </style>
 </head>
 <body>
 
 <header>
-  <h1 data-lang-key="title">Adnan’s Premium Domains</h1>
-  <div class="lang-switch">
-    <button data-lang="en" class="active">🇬🇧 English</button>
-    <button data-lang="ar">🇸🇦 عربي</button>
-    <button data-lang="fr">🇫🇷 Français</button>
-    <button data-lang="es">🇪🇸 Español</button>
-  </div>
+  <h1 id="pageTitle">Adnan’s Premium Domains</h1>
 </header>
 
+<div class="lang-switch">
+  <button onclick="setLanguage('en')" class="active">🇬🇧 English</button>
+  <button onclick="setLanguage('ar')">🇸🇦 عربي</button>
+  <button onclick="setLanguage('fr')">🇫🇷 Français</button>
+  <button onclick="setLanguage('es')">🇪🇸 Español</button>
+</div>
+
 <div class="search-area">
-  <input type="text" id="searchInput" placeholder="Search domains…" data-lang-placeholder="search" />
+  <input type="text" id="searchInput" placeholder="Search domains…" />
   <select id="extFilter">
     <option value="all">All extensions</option>
     <option value=".com">.com</option>
     <option value=".net">.net</option>
   </select>
   <select id="catFilter">
-    <option value="all" data-lang-option-all="allCats">All categories</option>
-    <option value="arabic" data-lang-option-arabic="arabic">Arabic</option>
-    <option value="tech" data-lang-option-tech="tech">Tech</option>
-    <option value="numeric" data-lang-option-numeric="numeric">Numeric</option>
+    <option value="all">All categories</option>
+    <option value="arabic">Arabic</option>
+    <option value="tech">Tech</option>
+    <option value="numeric">Numeric</option>
   </select>
-  <button onclick="filterDomains()" data-lang-key="btnSearch">Search</button>
+  <button onclick="filterDomains()">Search</button>
 </div>
 
 <div class="grid" id="domainsGrid"></div>
 
-<footer><span data-lang-key="footer">© 2025 Adnan Domains. All rights reserved.</span></footer>
-
 <script>
 const domains = [
-  { name:'taqe.net', desc:{en:'Short, brandable, ideal for Arabic/energy.',ar:'نطاق قصير وجذاب، مثالي مشاريع عربية/طاقة.',fr:'Court et marquant, idéal pour l’énergie.',es:'Corto y memorable, ideal para energía.'}, ext:'.net', cat:'arabic', url:'https://afternic.com/domain/taqe.net' },
-  { name:'25u.net', desc:{en:'Ultra-short domain for digital platforms.',ar:'نطاق قصير جدًا للمنصات الرقمية.',fr:'Domaine ultra‑court pour plateformes.',es:'Dominio ultra‑corto para plataformas.'}, ext:'.net', cat:'numeric', url:'https://afternic.com/domain/25u.net' },
-  // ... أضف بقية النطاقات بنفس التنسيق ...
+  { name:'taqe.net', desc:{en:'Arabic energy brand.', ar:'نطاق عربي للطاقة.', fr:'Marque arabe énergie.', es:'Marca árabe de energía.'}, ext:'.net', cat:'arabic', url:'https://afternic.com/domain/taqe.net' },
+  { name:'25u.net', desc:{en:'Ultra-short for platforms.', ar:'نطاق قصير للمنصات.', fr:'Très court pour plateformes.', es:'Muy corto para plataformas.'}, ext:'.net', cat:'numeric', url:'https://afternic.com/domain/25u.net' },
+  { name:'acnn.net', desc:{en:'Media/tech related.', ar:'نطاق إعلامي/تقني.', fr:'Média/technologie.', es:'Medios/tecnología.'}, ext:'.net', cat:'tech', url:'https://afternic.com/domain/acnn.net' },
+  { name:'alsyf.com', desc:{en:'Arabic power brand.', ar:'نطاق عربي قوي (السيف).', fr:'Marque arabe forte.', es:'Marca árabe fuerte.'}, ext:'.com', cat:'arabic', url:'https://afternic.com/domain/alsyf.com' },
+  { name:'cyberect.com', desc:{en:'Cybersecurity domain.', ar:'نطاق للأمن السيبراني.', fr:'Domaine cybersécurité.', es:'Dominio de ciberseguridad.'}, ext:'.com', cat:'tech', url:'https://afternic.com/domain/cyberect.com' }
+  // يمكنك إضافة المزيد هنا بنفس التنسيق
 ];
 
 const translations = {
-  en: { title:'Adnan’s Premium Domains', search:'Search domains…', btnSearch:'Search', footer:'© 2025 Adnan Domains. All rights reserved.' },
-  ar: { title:'نطاقات عدنان المميزة', search:'ابحث عن نطاق...', btnSearch:'بحث', footer:'© 2025 جميع الحقوق محفوظة لدى عدنان.' },
-  fr: { title:'Domaines Premium d\'Adnan', search:'Rechercher des domaines…', btnSearch:'Rechercher', footer:'© 2025 Adnan Domains. Tous droits réservés.' },
-  es: { title:'Dominios Premium de Adnan', search:'Buscar dominios…', btnSearch:'Buscar', footer:'© 2025 Adnan Domains. Todos los derechos reservados.' },
+  en: { title:"Adnan’s Premium Domains", search:"Search domains…", btn:"Buy Now" },
+  ar: { title:"نطاقات عدنان المميزة", search:"ابحث عن نطاق...", btn:"شراء الآن" },
+  fr: { title:"Domaines Premium d'Adnan", search:"Rechercher des domaines…", btn:"Acheter" },
+  es: { title:"Dominios Premium de Adnan", search:"Buscar dominios…", btn:"Comprar" }
 };
 
 let currentLang = 'en';
@@ -73,43 +93,36 @@ let currentLang = 'en';
 function renderDomains(list){
   const grid = document.getElementById('domainsGrid');
   grid.innerHTML = '';
-  list.forEach(d=>{
-    const div = document.createElement('div'); div.className='domain';
-    const h2 = document.createElement('h2'); h2.textContent = d.name;
-    const p = document.createElement('p'); p.textContent = d.desc[currentLang];
-    const a = document.createElement('a'); a.href = d.url; a.target='_blank'; a.className='btn';
-    a.textContent = translations[currentLang].btnSearch;
-    div.append(h2,p,a);
-    grid.append(div);
+  list.forEach(d => {
+    const div = document.createElement('div');
+    div.className = 'domain';
+    div.innerHTML = `<h2>${d.name}</h2><p>${d.desc[currentLang]}</p><a href="${d.url}" class="btn" target="_blank">${translations[currentLang].btn}</a>`;
+    grid.appendChild(div);
   });
 }
 
 function filterDomains(){
-  const q = document.getElementById('searchInput').value.toLowerCase();
+  const search = document.getElementById('searchInput').value.toLowerCase();
   const ext = document.getElementById('extFilter').value;
   const cat = document.getElementById('catFilter').value;
-  const filtered = domains.filter(d=>{
-    return (!q || d.name.includes(q)) &&
-           (ext==='all' || d.ext===ext) &&
-           (cat==='all' || d.cat===cat);
-  });
+  const filtered = domains.filter(d =>
+    (!search || d.name.toLowerCase().includes(search)) &&
+    (ext === 'all' || d.ext === ext) &&
+    (cat === 'all' || d.cat === cat)
+  );
   renderDomains(filtered);
 }
 
-function switchLang(lang){
-  currentLang=lang;
-  document.querySelectorAll('[data-lang-key]').forEach(el=>el.textContent=translations[lang][el.dataset.langKey]);
-  document.querySelectorAll('[data-lang-placeholder]').forEach(el=>el.placeholder=translations[lang].search);
-  document.querySelectorAll(`[data-lang-option-${currentLang}]`).forEach(opt=>opt.textContent=translations[lang][opt.dataset.langOptionAll || opt.dataset[`langOption${opt.dataset.langOptionAll?.charAt(0).toUpperCase()+opt.dataset.langOptionAll?.slice(1)}`]);
+function setLanguage(lang){
+  currentLang = lang;
+  document.querySelectorAll('.lang-switch button').forEach(btn => btn.classList.remove('active'));
+  document.querySelector(`.lang-switch button[onclick="setLanguage('${lang}')"]`).classList.add('active');
+  document.getElementById('pageTitle').textContent = translations[lang].title;
+  document.getElementById('searchInput').placeholder = translations[lang].search;
   renderDomains(domains);
-  document.querySelectorAll('.lang-switch button').forEach(btn=>btn.classList.toggle('active', btn.dataset.lang===lang));
 }
 
-document.querySelectorAll('.lang-switch button').forEach(btn => {
-  btn.onclick = ()=>switchLang(btn.dataset.lang);
-});
-
-window.onload = () => { renderDomains(domains); };
+window.onload = () => renderDomains(domains);
 </script>
 
 </body>
