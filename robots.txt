@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://domain2cart.com/sitemap.xml
