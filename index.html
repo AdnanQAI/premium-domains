@@ -4,39 +4,89 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Adnan Domains</title>
+
+  <!-- ✅ سطر التحقق من Google -->
+  <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE" />
+
+  <!-- ✅ لاحقًا: كود Google AdSense إذا أحببت -->
+  <!--
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6818905588211828"
+     crossorigin="anonymous"></script>
+  -->
+
   <style>
-    body { margin:0; font-family:Arial,sans-serif; background:#111; color:#eee; }
-    header { background:#000; padding:20px; text-align:center; }
-    header h1 { margin:0; font-size:2rem; color:gold; }
-    .lang-switch, .search-area { text-align:center; margin:10px 0; }
+    body { margin:0; font-family:'Segoe UI',sans-serif; background:#0e0e0e; color:#fff; }
+    header { background:#1a1a1a; padding:25px 15px; text-align:center; box-shadow:0 0 10px #222; }
+    header h1 { margin:0; font-size:2.2rem; color:#00d4ff; }
+
+    .lang-switch, .search-area { text-align:center; margin:20px 0; }
     .lang-switch button {
-      margin:0 5px; padding:5px 10px; border:none;
-      cursor:pointer; border-radius:3px; background:#222; color:#eee;
+      margin:0 5px; padding:6px 12px; border:none;
+      cursor:pointer; border-radius:4px; background:#333;
+      color:#eee; transition:0.3s;
     }
-    .lang-switch button.active { background:gold; color:#000; }
-    .search-area input, .search-area select {
-      padding:8px; margin:5px; border-radius:4px;
-      border:1px solid #555; background:#222; color:#eee;
+    .lang-switch button.active, .lang-switch button:hover {
+      background:#00d4ff; color:#000;
+    }
+
+    .search-area input, .search-area select, .search-area button {
+      padding:10px; margin:6px;
+      border-radius:5px; border:1px solid #444;
+      background:#1f1f1f; color:#fff; font-size:1rem;
     }
     .search-area button {
-      padding:8px 15px; border:none; background:gold;
-      color:#000; border-radius:4px; cursor:pointer;
+      background:#00d4ff; color:#000; border:none;
+      cursor:pointer; transition:0.3s;
     }
+    .search-area button:hover {
+      background:#00b8e6;
+    }
+
     .grid {
-      display:grid; gap:15px; padding:20px;
-      grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+      display:grid;
+      gap:15px;
+      padding:20px;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
     }
+
     .domain {
-      background:#1a1a1a; border-left:5px solid gold;
-      padding:15px; border-radius:5px; transition:background 0.3s;
+      background:#1c1c1c;
+      padding:18px;
+      border-radius:6px;
+      border:1px solid #2a2a2a;
+      transition:0.3s;
+      box-shadow:0 0 10px rgba(0,212,255,0.05);
     }
-    .domain:hover { background:#2a2a2a; }
-    .domain h2 { margin:0 0 5px; color:gold; font-size:1.2rem; }
-    .domain p { margin:0 0 10px; color:#bbb; font-size:0.95rem; }
-    .domain .btn {
-      display:inline-block; padding:8px 12px; background:gold;
-      color:#000; border:none; border-radius:4px;
-      text-decoration:none; font-weight:bold;
+    .domain:hover {
+      background:#242424;
+      box-shadow:0 0 10px rgba(0,212,255,0.2);
+    }
+
+    .domain h2 {
+      margin:0 0 8px;
+      font-size:1.1rem;
+      color:#00d4ff;
+      word-break: break-word;
+    }
+
+    .domain p {
+      font-size:0.95rem;
+      color:#ccc;
+      margin:0 0 10px;
+    }
+
+    .btn {
+      display:inline-block;
+      padding:8px 12px;
+      background:#00d4ff;
+      color:#000;
+      font-weight:bold;
+      text-decoration:none;
+      border-radius:4px;
+      transition:0.3s;
+    }
+    .btn:hover {
+      background:#00b8e6;
     }
   </style>
 </head>
@@ -65,6 +115,7 @@
     <option value="arabic">Arabic</option>
     <option value="tech">Tech</option>
     <option value="numeric">Numeric</option>
+    <option value="short">Short</option>
   </select>
   <button onclick="filterDomains()">Search</button>
 </div>
@@ -73,12 +124,23 @@
 
 <script>
 const domains = [
-  { name:'taqe.net', desc:{en:'Arabic energy brand.', ar:'نطاق عربي للطاقة.', fr:'Marque arabe énergie.', es:'Marca árabe de energía.'}, ext:'.net', cat:'arabic', url:'https://afternic.com/domain/taqe.net' },
-  { name:'25u.net', desc:{en:'Ultra-short for platforms.', ar:'نطاق قصير للمنصات.', fr:'Très court pour plateformes.', es:'Muy corto para plataformas.'}, ext:'.net', cat:'numeric', url:'https://afternic.com/domain/25u.net' },
-  { name:'acnn.net', desc:{en:'Media/tech related.', ar:'نطاق إعلامي/تقني.', fr:'Média/technologie.', es:'Medios/tecnología.'}, ext:'.net', cat:'tech', url:'https://afternic.com/domain/acnn.net' },
-  { name:'alsyf.com', desc:{en:'Arabic power brand.', ar:'نطاق عربي قوي (السيف).', fr:'Marque arabe forte.', es:'Marca árabe fuerte.'}, ext:'.com', cat:'arabic', url:'https://afternic.com/domain/alsyf.com' },
-  { name:'cyberect.com', desc:{en:'Cybersecurity domain.', ar:'نطاق للأمن السيبراني.', fr:'Domaine cybersécurité.', es:'Dominio de ciberseguridad.'}, ext:'.com', cat:'tech', url:'https://afternic.com/domain/cyberect.com' }
-  // يمكنك إضافة المزيد هنا بنفس التنسيق
+  { name:'taqe.net', desc:{en:'Arabic energy brand.'}, ext:'.net', cat:'arabic', url:'https://afternic.com/domain/taqe.net' },
+  { name:'25u.net', desc:{en:'Ultra-short and flexible.'}, ext:'.net', cat:'short', url:'https://afternic.com/domain/25u.net' },
+  { name:'acnn.net', desc:{en:'Tech/Media inspired.'}, ext:'.net', cat:'tech', url:'https://afternic.com/domain/acnn.net' },
+  { name:'add111.com', desc:{en:'Numeric brand, memorable.'}, ext:'.com', cat:'numeric', url:'https://afternic.com/domain/add111.com' },
+  { name:'add222.com', desc:{en:'Triple-two branded domain.'}, ext:'.com', cat:'numeric', url:'https://afternic.com/domain/add222.com' },
+  { name:'add555.com', desc:{en:'Popular and iconic.'}, ext:'.com', cat:'numeric', url:'https://afternic.com/domain/add555.com' },
+  { name:'add600.net', desc:{en:'Balanced and numeric.'}, ext:'.net', cat:'numeric', url:'https://afternic.com/domain/add600.net' },
+  { name:'aadtv.com', desc:{en:'Media/TV friendly domain.'}, ext:'.com', cat:'tech', url:'https://afternic.com/domain/aadtv.com' },
+  { name:'co8.net', desc:{en:'Short and powerful.'}, ext:'.net', cat:'short', url:'https://afternic.com/domain/co8.net' },
+  { name:'alsyf.com', desc:{en:'Arabic strength and legacy.'}, ext:'.com', cat:'arabic', url:'https://afternic.com/domain/alsyf.com' },
+  { name:'cyberect.com', desc:{en:'Cyber protection brand.'}, ext:'.com', cat:'tech', url:'https://afternic.com/domain/cyberect.com' },
+  { name:'headerme.com', desc:{en:'Web/tech personalized.'}, ext:'.com', cat:'tech', url:'https://afternic.com/domain/headerme.com' },
+  { name:'es8.net', desc:{en:'Short and futuristic.'}, ext:'.net', cat:'short', url:'https://afternic.com/domain/es8.net' },
+  { name:'horyya.com', desc:{en:'Freedom in Arabic.'}, ext:'.com', cat:'arabic', url:'https://afternic.com/domain/horyya.com' },
+  { name:'isrest.com', desc:{en:'Relaxation and travel.'}, ext:'.com', cat:'tech', url:'https://afternic.com/domain/isrest.com' },
+  { name:'isvez.com', desc:{en:'Modern brand name.'}, ext:'.com', cat:'tech', url:'https://afternic.com/domain/isvez.com' },
+  { name:'iw8.net', desc:{en:'Compact and global.'}, ext:'.net', cat:'short', url:'https://afternic.com/domain/iw8.net' },
 ];
 
 const translations = {
@@ -96,7 +158,7 @@ function renderDomains(list){
   list.forEach(d => {
     const div = document.createElement('div');
     div.className = 'domain';
-    div.innerHTML = `<h2>${d.name}</h2><p>${d.desc[currentLang]}</p><a href="${d.url}" class="btn" target="_blank">${translations[currentLang].btn}</a>`;
+    div.innerHTML = `<h2>${d.name}</h2><p>${d.desc[currentLang] || d.desc.en}</p><a href="${d.url}" class="btn" target="_blank">${translations[currentLang].btn}</a>`;
     grid.appendChild(div);
   });
 }
