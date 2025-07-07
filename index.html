@@ -1,813 +1,127 @@
 <!DOCTYPE html>
-
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نطاقات مميزة للبيع</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-```
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Premium Domains by Adnan</title>
+  <style>
     body {
-        font-family: 'Cairo', sans-serif;
-        background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #16213e 100%);
-        color: #ffffff;
-        line-height: 1.6;
-        min-height: 100vh;
-        transition: all 0.3s ease;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #111;
+      color: #fff;
     }
-
-    .navbar {
-        position: fixed;
-        top: 20px;
-        left: 20px;
-        right: 20px;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 20px;
-        padding: 15px 30px;
-        z-index: 1000;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+    header {
+      background: #000;
+      padding: 30px 20px;
+      text-align: center;
+      color: gold;
     }
-
-    .logo {
-        font-size: 1.5rem;
-        font-weight: 800;
-        background: linear-gradient(45deg, #d4af37, #4a9eff);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+    header h1 {
+      font-size: 2.5em;
+      margin: 0;
     }
-
-    .lang-switcher {
-        display: flex;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 25px;
-        padding: 5px;
-        position: relative;
-        max-width: 300px;
+    header p {
+      font-size: 1.1em;
+      color: #ccc;
     }
-
-    .lang-dropdown {
-        position: relative;
+    .container {
+      max-width: 960px;
+      margin: 40px auto;
+      padding: 0 20px;
     }
-
-    .lang-current {
-        padding: 8px 16px;
-        border: none;
-        background: linear-gradient(135deg, #d4af37, #f4d03f);
-        color: #000;
-        border-radius: 20px;
-        cursor: pointer;
-        font-weight: 700;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        min-width: 120px;
-        justify-content: space-between;
+    .domain {
+      background: #1b1b1b;
+      margin-bottom: 20px;
+      padding: 20px;
+      border-left: 5px solid gold;
+      border-radius: 5px;
+      transition: background 0.3s;
     }
-
-    .lang-dropdown-menu {
-        position: absolute;
-        top: 100%;
-        right: 0;
-        background: rgba(30, 30, 50, 0.95);
-        backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 15px;
-        padding: 10px 0;
-        min-width: 200px;
-        max-height: 300px;
-        overflow-y: auto;
-        z-index: 1001;
-        display: none;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    .domain:hover {
+      background: #2a2a2a;
     }
-
-    .lang-dropdown-menu.show {
-        display: block;
+    .domain h2 {
+      margin: 0;
+      font-size: 1.5em;
+      color: gold;
     }
-
-    .lang-option {
-        padding: 8px 16px;
-        color: #ffffff;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-weight: 500;
+    .domain p {
+      color: #aaa;
+      margin: 10px 0;
     }
-
-    .lang-option:hover {
-        background: rgba(212, 175, 55, 0.2);
-        color: #d4af37;
+    .buy-btn {
+      display: inline-block;
+      background: gold;
+      color: #000;
+      padding: 10px 15px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
     }
-
-    .lang-flag {
-        font-size: 1.2rem;
+    footer {
+      text-align: center;
+      color: #777;
+      padding: 40px 0;
+      border-top: 1px solid #333;
     }
-
-    .hero {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: 100px 20px 50px;
-    }
-
-    .hero-title {
-        font-size: clamp(2.5rem, 8vw, 5rem);
-        font-weight: 900;
-        margin-bottom: 20px;
-        background: linear-gradient(135deg, #d4af37, #4a9eff);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-
-    .hero-subtitle {
-        font-size: clamp(1.2rem, 4vw, 1.8rem);
-        color: #a0a0a0;
-        margin-bottom: 40px;
-    }
-
-    .cta-btn {
-        display: inline-block;
-        padding: 15px 30px;
-        background: linear-gradient(135deg, #d4af37, #f4d03f);
-        color: #000;
-        text-decoration: none;
-        border-radius: 25px;
-        font-weight: 700;
-        transition: transform 0.3s ease;
-    }
-
-    .cta-btn:hover {
-        transform: translateY(-3px);
-    }
-
-    .domains-section {
-        padding: 80px 20px;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .section-title {
-        text-align: center;
-        font-size: 3rem;
-        font-weight: 800;
-        margin-bottom: 50px;
-        background: linear-gradient(135deg, #d4af37, #4a9eff);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-
-    .domains-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 30px;
-    }
-
-    .domain-card {
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 20px;
-        padding: 30px;
-        transition: transform 0.3s ease;
-    }
-
-    .domain-card:hover {
-        transform: translateY(-10px);
-    }
-
-    .domain-name {
-        font-size: 2rem;
-        font-weight: 700;
-        color: #d4af37;
-        margin-bottom: 15px;
-    }
-
-    .domain-desc {
-        color: #a0a0a0;
-        margin-bottom: 20px;
-        line-height: 1.6;
-    }
-
-    .action-buttons {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-        margin-bottom: 15px;
-    }
-
-    .platform-btn {
-        padding: 15px 12px;
-        background: rgba(255, 255, 255, 0.08);
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        border-radius: 12px;
-        color: #ffffff;
-        text-decoration: none;
-        text-align: center;
-        font-weight: 600;
-        font-size: 0.95rem;
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        backdrop-filter: blur(10px);
-    }
-
-    .platform-btn:hover {
-        background: rgba(212, 175, 55, 0.15);
-        border-color: #d4af37;
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
-    }
-
-    .platform-btn i {
-        font-size: 1rem;
-    }
-
-    .contact-btn {
-        width: 100%;
-        padding: 15px 20px;
-        background: linear-gradient(135deg, #d4af37, #f4d03f);
-        color: #000;
-        text-decoration: none;
-        border-radius: 15px;
-        text-align: center;
-        font-weight: 700;
-        font-size: 1rem;
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-        border: 2px solid transparent;
-        margin-top: 5px;
-    }
-
-    .contact-btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
-        border-color: rgba(212, 175, 55, 0.6);
-    }
-
-    .contact-btn i {
-        font-size: 1.1rem;
-    }
-
-    .contact-section {
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(20px);
-        border-radius: 20px;
-        padding: 50px 30px;
-        margin: 80px 20px;
-        text-align: center;
-    }
-
-    .contact-title {
-        font-size: 2.5rem;
-        font-weight: 800;
-        margin-bottom: 20px;
-        background: linear-gradient(135deg, #d4af37, #4a9eff);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-
-    .contact-text {
-        color: #a0a0a0;
-        margin-bottom: 30px;
-        font-size: 1.1rem;
-    }
-
-    .contact-email {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 12px;
-        padding: 18px 35px;
-        background: linear-gradient(135deg, #d4af37, #f4d03f);
-        color: #000;
-        text-decoration: none;
-        border-radius: 30px;
-        font-weight: 800;
-        font-size: 1.2rem;
-        transition: all 0.4s ease;
-        box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
-        border: 2px solid transparent;
-    }
-
-    .contact-email:hover {
-        transform: translateY(-5px) scale(1.05);
-        box-shadow: 0 12px 35px rgba(212, 175, 55, 0.6);
-        border-color: rgba(212, 175, 55, 0.8);
-    }
-
-    .contact-email i {
-        font-size: 1.3rem;
-    }
-
-    .footer {
-        text-align: center;
-        padding: 30px;
-        color: #666;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    /* Language specific styles */
-    .ar-content { display: block; }
-    .en-content, .ru-content, .zh-content, .ja-content, .hi-content, .he-content, 
-    .fr-content, .pl-content, .pt-content, .id-content, .es-content, .it-content { display: none; }
-    
-    body.english .ar-content { display: none; }
-    body.english .en-content { display: block; }
-    body.english { font-family: 'Arial', sans-serif; }
-
-    body.russian .ar-content, body.russian .en-content { display: none; }
-    body.russian .ru-content { display: block; }
-    body.russian { font-family: 'Arial', sans-serif; }
-
-    body.chinese .ar-content, body.chinese .en-content { display: none; }
-    body.chinese .zh-content { display: block; }
-    body.chinese { font-family: 'Microsoft YaHei', sans-serif; }
-
-    body.japanese .ar-content, body.japanese .en-content { display: none; }
-    body.japanese .ja-content { display: block; }
-    body.japanese { font-family: 'Hiragino Sans', sans-serif; }
-
-    body.hindi .ar-content, body.hindi .en-content { display: none; }
-    body.hindi .hi-content { display: block; }
-    body.hindi { font-family: 'Noto Sans Devanagari', sans-serif; }
-
-    body.hebrew .ar-content, body.hebrew .en-content { display: none; }
-    body.hebrew .he-content { display: block; }
-    body.hebrew { font-family: 'Arial Hebrew', sans-serif; direction: rtl; }
-
-    body.french .ar-content, body.french .en-content { display: none; }
-    body.french .fr-content { display: block; }
-    body.french { font-family: 'Arial', sans-serif; }
-
-    body.polish .ar-content, body.polish .en-content { display: none; }
-    body.polish .pl-content { display: block; }
-    body.polish { font-family: 'Arial', sans-serif; }
-
-    body.portuguese .ar-content, body.portuguese .en-content { display: none; }
-    body.portuguese .pt-content { display: block; }
-    body.portuguese { font-family: 'Arial', sans-serif; }
-
-    body.indonesian .ar-content, body.indonesian .en-content { display: none; }
-    body.indonesian .id-content { display: block; }
-    body.indonesian { font-family: 'Arial', sans-serif; }
-
-    body.spanish .ar-content, body.spanish .en-content { display: none; }
-    body.spanish .es-content { display: block; }
-    body.spanish { font-family: 'Arial', sans-serif; }
-
-    body.italian .ar-content, body.italian .en-content { display: none; }
-    body.italian .it-content { display: block; }
-    body.italian { font-family: 'Arial', sans-serif; }
-
-    @media (max-width: 768px) {
-        .navbar {
-            padding: 10px 20px;
-        }
-        
-        .domains-grid {
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-        
-        .action-buttons {
-            grid-template-columns: 1fr;
-            gap: 10px;
-        }
-    }
-</style>
-```
-
+  </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo">Premium Domains</div>
-        <div class="lang-switcher">
-            <div class="lang-dropdown">
-                <button class="lang-current" onclick="toggleDropdown()">
-                    <span class="lang-flag">🇸🇦</span>
-                    <span class="lang-name">عربي</span>
-                    <i class="fas fa-chevron-down"></i>
-                </button>
-                <div class="lang-dropdown-menu" id="langDropdown">
-                    <div class="lang-option" onclick="switchLang('ar', '🇸🇦', 'عربي')">
-                        <span class="lang-flag">🇸🇦</span>
-                        <span>العربية</span>
-                    </div>
-                    <div class="lang-option" onclick="switchLang('en', '🇺🇸', 'English')">
-                        <span class="lang-flag">🇺🇸</span>
-                        <span>English</span>
-                    </div>
-                    <div class="lang-option" onclick="switchLang('ru', '🇷🇺', 'Русский')">
-                        <span class="lang-flag">🇷🇺</span>
-                        <span>Русский</span>
-                    </div>
-                    <div class="lang-option" onclick="switchLang('zh', '🇨🇳', '中文')">
-                        <span class="lang-flag">🇨🇳</span>
-                        <span>中文</span>
-                    </div>
-                    <div class="lang-option" onclick="switchLang('ja', '🇯🇵', '日本語')">
-                        <span class="lang-flag">🇯🇵</span>
-                        <span>日本語</span>
-                    </div>
-                    <div class="lang-option" onclick="switchLang('hi', '🇮🇳', 'हिंदी')">
-                        <span class="lang-flag">🇮🇳</span>
-                        <span>हिंदी</span>
-                    </div>
-                    <div class="lang-option" onclick="switchLang('he', '🇮🇱', 'עברית')">
-                        <span class="lang-flag">🇮🇱</span>
-                        <span>עברית</span>
-                    </div>
-                    <div class="lang-option" onclick="switchLang('fr', '🇫🇷', 'Français')">
-                        <span class="lang-flag">🇫🇷</span>
-                        <span>Français</span>
-                    </div>
-                    <div class="lang-option" onclick="switchLang('pl', '🇵🇱', 'Polski')">
-                        <span class="lang-flag">🇵🇱</span>
-                        <span>Polski</span>
-                    </div>
-                    <div class="lang-option" onclick="switchLang('pt', '🇧🇷', 'Português')">
-                        <span class="lang-flag">🇧🇷</span>
-                        <span>Português</span>
-                    </div>
-                    <div class="lang-option" onclick="switchLang('id', '🇮🇩', 'Bahasa')">
-                        <span class="lang-flag">🇮🇩</span>
-                        <span>Bahasa Indonesia</span>
-                    </div>
-                    <div class="lang-option" onclick="switchLang('es', '🇪🇸', 'Español')">
-                        <span class="lang-flag">🇪🇸</span>
-                        <span>Español</span>
-                    </div>
-                    <div class="lang-option" onclick="switchLang('it', '🇮🇹', 'Italiano')">
-                        <span class="lang-flag">🇮🇹</span>
-                        <span>Italiano</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
 
-```
-<section class="hero">
-    <div>
-        <h1 class="hero-title ar-content">نطاقات حصرية للاستثمار</h1>
-        <h1 class="hero-title en-content">Exclusive Premium Domains</h1>
-        <h1 class="hero-title ru-content">Эксклюзивные премиум домены</h1>
-        <h1 class="hero-title zh-content">独家优质域名</h1>
-        <h1 class="hero-title ja-content">独占プレミアムドメイン</h1>
-        <h1 class="hero-title hi-content">विशेष प्रीमियम डोमेन</h1>
-        <h1 class="hero-title he-content">דומיינים פרימיום בלעדיים</h1>
-        <h1 class="hero-title fr-content">Domaines Premium Exclusifs</h1>
-        <h1 class="hero-title pl-content">Ekskluzywne Domeny Premium</h1>
-        <h1 class="hero-title pt-content">Domínios Premium Exclusivos</h1>
-        <h1 class="hero-title id-content">Domain Premium Eksklusif</h1>
-        <h1 class="hero-title es-content">Dominios Premium Exclusivos</h1>
-        <h1 class="hero-title it-content">Domini Premium Esclusivi</h1>
-        
-        <p class="hero-subtitle ar-content">استثمر في المستقبل الرقمي مع نطاقات فريدة ومميزة</p>
-        <p class="hero-subtitle en-content">Invest in the digital future with unique premium domains</p>
-        <p class="hero-subtitle ru-content">Инвестируйте в цифровое будущее с уникальными доменами</p>
-        <p class="hero-subtitle zh-content">投资数字未来，选择独特的优质域名</p>
-        <p class="hero-subtitle ja-content">ユニークなプレミアムドメインでデジタルの未来に投資</p>
-        <p class="hero-subtitle hi-content">अनूठे प्रीमियम डोमेन के साथ डिजिटल भविष्य में निवेश करें</p>
-        <p class="hero-subtitle he-content">השקיעו בעתיד הדיגיטלי עם דומיינים פרימיום ייחודיים</p>
-        <p class="hero-subtitle fr-content">Investissez dans l'avenir numérique avec des domaines premium uniques</p>
-        <p class="hero-subtitle pl-content">Inwestuj w cyfrową przyszłość z unikalnymi domenami premium</p>
-        <p class="hero-subtitle pt-content">Invista no futuro digital com domínios premium únicos</p>
-        <p class="hero-subtitle id-content">Berinvestasi di masa depan digital dengan domain premium unik</p>
-        <p class="hero-subtitle es-content">Invierte en el futuro digital con dominios premium únicos</p>
-        <p class="hero-subtitle it-content">Investi nel futuro digitale con domini premium unici</p>
-        
-        <a href="#domains" class="cta-btn">
-            <span class="ar-content">استكشف النطاقات</span>
-            <span class="en-content">Explore Domains</span>
-        </a>
+  <header>
+    <h1>Adnan’s Premium Domains</h1>
+    <p>Exclusive, brandable, and powerful domains for your next venture</p>
+  </header>
+
+  <div class="container">
+
+    <!-- Repeat this block for each domain -->
+    <div class="domain">
+      <h2>taqe.net</h2>
+      <p>Short, brandable, perfect for Arabic or energy-related projects.</p>
+      <a class="buy-btn" href="https://afternic.com/domain/taqe.net" target="_blank">Buy Now</a>
     </div>
-</section>
 
-<section class="domains-section" id="domains">
-    <h2 class="section-title ar-content">مجموعة النطاقات المميزة</h2>
-    <h2 class="section-title en-content">Premium Domain Collection</h2>
-
-    <div class="domains-grid">
-        <!-- taqe.net -->
-        <div class="domain-card">
-            <h3 class="domain-name">taqe.net</h3>
-            <p class="domain-desc ar-content">نطاق قوي للطاقة والتكنولوجيا - اسم قصير وسهل التذكر مثالي للشركات التقنية والطاقة المتجددة</p>
-            <p class="domain-desc en-content">Powerful domain for energy and technology - short and memorable name perfect for tech companies and renewable energy</p>
-            
-            <div class="action-buttons">
-                <a href="https://www.afternic.com/domain/taqe.net" target="_blank" class="platform-btn">
-                    <i class="fas fa-store"></i> Afternic
-                </a>
-                <a href="https://sedo.com/search/details/?domain=taqe.net" target="_blank" class="platform-btn">
-                    <i class="fas fa-handshake"></i> Sedo
-                </a>
-            </div>
-            <a href="mailto:aqudair@gmail.com?subject=استفسار عن taqe.net" class="contact-btn">
-                <i class="fas fa-envelope"></i>
-                <span class="ar-content">تواصل للاستفسار</span>
-                <span class="en-content">Contact for Inquiry</span>
-            </a>
-        </div>
-
-        <!-- 25u.net -->
-        <div class="domain-card">
-            <h3 class="domain-name">25u.net</h3>
-            <p class="domain-desc ar-content">نطاق رقمي مميز وقصير - مثالي للمنصات التعليمية أو الخدمات الشخصية، سهل النطق والكتابة</p>
-            <p class="domain-desc en-content">Distinctive short numeric domain - perfect for educational platforms or personal services, easy to pronounce and type</p>
-            
-            <div class="action-buttons">
-                <a href="https://www.afternic.com/domain/25u.net" target="_blank" class="platform-btn">
-                    <i class="fas fa-store"></i> Afternic
-                </a>
-                <a href="https://sedo.com/search/details/?domain=25u.net" target="_blank" class="platform-btn">
-                    <i class="fas fa-handshake"></i> Sedo
-                </a>
-            </div>
-            <a href="mailto:aqudair@gmail.com?subject=استفسار عن 25u.net" class="contact-btn">
-                <i class="fas fa-envelope"></i>
-                <span class="ar-content">تواصل للاستفسار</span>
-                <span class="en-content">Contact for Inquiry</span>
-            </a>
-        </div>
-
-        <!-- acnn.net -->
-        <div class="domain-card">
-            <h3 class="domain-name">acnn.net</h3>
-            <p class="domain-desc ar-content">نطاق إخباري قوي - مثالي لشبكات الأخبار والإعلام، اسم احترافي يذكر بالشبكات الإخبارية العالمية</p>
-            <p class="domain-desc en-content">Powerful news domain - perfect for news networks and media, professional name reminiscent of global news networks</p>
-            
-            <div class="action-buttons">
-                <a href="https://www.afternic.com/domain/acnn.net" target="_blank" class="platform-btn">
-                    <i class="fas fa-store"></i> Afternic
-                </a>
-                <a href="https://sedo.com/search/details/?domain=acnn.net" target="_blank" class="platform-btn">
-                    <i class="fas fa-handshake"></i> Sedo
-                </a>
-            </div>
-            <a href="mailto:aqudair@gmail.com?subject=استفسار عن acnn.net" class="contact-btn">
-                <i class="fas fa-envelope"></i>
-                <span class="ar-content">تواصل للاستفسار</span>
-                <span class="en-content">Contact for Inquiry</span>
-            </a>
-        </div>
-
-        <!-- add111.com -->
-        <div class="domain-card">
-            <h3 class="domain-name">add111.com</h3>
-            <p class="domain-desc ar-content">نطاق للإعلانات والتسويق - مثالي لشركات الإعلان ومنصات التسويق الرقمي</p>
-            <p class="domain-desc en-content">Advertising domain - perfect for advertising companies and digital marketing platforms</p>
-            
-            <div class="action-buttons">
-                <a href="https://www.afternic.com/domain/add111.com" target="_blank" class="platform-btn">
-                    <i class="fas fa-store"></i> Afternic
-                </a>
-                <a href="https://sedo.com/search/details/?domain=add111.com" target="_blank" class="platform-btn">
-                    <i class="fas fa-handshake"></i> Sedo
-                </a>
-            </div>
-            <a href="mailto:aqudair@gmail.com?subject=استفسار عن add111.com" class="contact-btn">
-                <i class="fas fa-envelope"></i>
-                <span class="ar-content">تواصل للاستفسار</span>
-                <span class="en-content">Contact for Inquiry</span>
-            </a>
-        </div>
-
-        <!-- add222.com -->
-        <div class="domain-card">
-            <h3 class="domain-name">add222.com</h3>
-            <p class="domain-desc ar-content">نطاق تسويقي متميز - أرقام سهلة التذكر مع كلمة Add، مثالي للحملات الإعلانية</p>
-            <p class="domain-desc en-content">Distinguished marketing domain - easy to remember numbers with Add, ideal for advertising campaigns</p>
-            
-            <div class="action-buttons">
-                <a href="https://www.afternic.com/domain/add222.com" target="_blank" class="platform-btn">
-                    <i class="fas fa-store"></i> Afternic
-                </a>
-                <a href="https://sedo.com/search/details/?domain=add222.com" target="_blank" class="platform-btn">
-                    <i class="fas fa-handshake"></i> Sedo
-                </a>
-            </div>
-            <a href="mailto:aqudair@gmail.com?subject=استفسار عن add222.com" class="contact-btn">
-                <i class="fas fa-envelope"></i>
-                <span class="ar-content">تواصل للاستفسار</span>
-                <span class="en-content">Contact for Inquiry</span>
-            </a>
-        </div>
-
-        <!-- add555.com -->
-        <div class="domain-card">
-            <h3 class="domain-name">add555.com</h3>
-            <p class="domain-desc ar-content">نطاق إعلاني مميز - رقم 555 مشهور عالمياً، مثالي للخدمات الهاتفية والدعم الفني</p>
-            <p class="domain-desc en-content">Distinctive advertising domain - 555 number globally famous, perfect for phone services and technical support</p>
-            
-            <div class="action-buttons">
-                <a href="https://www.afternic.com/domain/add555.com" target="_blank" class="platform-btn">
-                    <i class="fas fa-store"></i> Afternic
-                </a>
-                <a href="https://sedo.com/search/details/?domain=add555.com" target="_blank" class="platform-btn">
-                    <i class="fas fa-handshake"></i> Sedo
-                </a>
-            </div>
-            <a href="mailto:aqudair@gmail.com?subject=استفسار عن add555.com" class="contact-btn">
-                <i class="fas fa-envelope"></i>
-                <span class="ar-content">تواصل للاستفسار</span>
-                <span class="en-content">Contact for Inquiry</span>
-            </a>
-        </div>
-
-        <!-- باقي النطاقات -->
-        <div class="domain-card">
-            <h3 class="domain-name">co8.net</h3>
-            <p class="domain-desc ar-content">نطاق شركات مختصر - CO للشركة مع رقم 8 المحظوظ، مثالي للشركات والمؤسسات التجارية</p>
-            <p class="domain-desc en-content">Short company domain - CO for company with lucky number 8, perfect for businesses and commercial institutions</p>
-            
-            <div class="action-buttons">
-                <a href="https://www.afternic.com/domain/co8.net" target="_blank" class="platform-btn">
-                    <i class="fas fa-store"></i> Afternic
-                </a>
-                <a href="https://sedo.com/search/details/?domain=co8.net" target="_blank" class="platform-btn">
-                    <i class="fas fa-handshake"></i> Sedo
-                </a>
-            </div>
-            <a href="mailto:aqudair@gmail.com?subject=استفسار عن co8.net" class="contact-btn">
-                <i class="fas fa-envelope"></i>
-                <span class="ar-content">تواصل للاستفسار</span>
-                <span class="en-content">Contact for Inquiry</span>
-            </a>
-        </div>
-
-        <div class="domain-card">
-            <h3 class="domain-name">alsyf.com</h3>
-            <p class="domain-desc ar-content">نطاق عربي أصيل - السيف رمز القوة والعراقة، مثالي للشركات العربية والمشاريع التراثية</p>
-            <p class="domain-desc en-content">Authentic Arabic domain - Alsyf (sword) symbol of strength and heritage, perfect for Arab companies and heritage projects</p>
-            
-            <div class="action-buttons">
-                <a href="https://www.afternic.com/domain/alsyf.com" target="_blank" class="platform-btn">
-                    <i class="fas fa-store"></i> Afternic
-                </a>
-                <a href="https://sedo.com/search/details/?domain=alsyf.com" target="_blank" class="platform-btn">
-                    <i class="fas fa-handshake"></i> Sedo
-                </a>
-            </div>
-            <a href="mailto:aqudair@gmail.com?subject=استفسار عن alsyf.com" class="contact-btn">
-                <i class="fas fa-envelope"></i>
-                <span class="ar-content">تواصل للاستفسار</span>
-                <span class="en-content">Contact for Inquiry</span>
-            </a>
-        </div>
+    <div class="domain">
+      <h2>25u.net</h2>
+      <p>Ultra-short domain — perfect for students or digital platforms.</p>
+      <a class="buy-btn" href="https://afternic.com/domain/25u.net" target="_blank">Buy Now</a>
     </div>
-</section>
 
-<section class="contact-section" id="contact">
-    <h2 class="contact-title ar-content">تواصل معنا</h2>
-    <h2 class="contact-title en-content">Contact Us</h2>
-    
-    <p class="contact-text ar-content">للاستفسار عن أي من النطاقات أو لمناقشة الأسعار والعروض الخاصة</p>
-    <p class="contact-text en-content">For inquiries about any domains or to discuss pricing and special offers</p>
-    
-    <a href="mailto:aqudair@gmail.com?subject=استفسار عن النطاقات" class="contact-email">
-        <i class="fas fa-envelope"></i>
-        <span class="ar-content">للتواصل</span>
-        <span class="en-content">Contact Us</span>
-    </a>
-</section>
+    <div class="domain">
+      <h2>acnn.net</h2>
+      <p>Media-ready domain inspired by CNN. Ideal for news or broadcast sites.</p>
+      <a class="buy-btn" href="https://afternic.com/domain/acnn.net" target="_blank">Buy Now</a>
+    </div>
 
-<footer class="footer">
-    <p class="ar-content">&copy; 2025 Premium Domains. جميع الحقوق محفوظة.</p>
-    <p class="en-content">&copy; 2025 Premium Domains. All rights reserved.</p>
-</footer>
+    <div class="domain">
+      <h2>add111.com</h2>
+      <p>Memorable numeric branding – ideal for advertising or tracking platforms.</p>
+      <a class="buy-btn" href="https://afternic.com/domain/add111.com" target="_blank">Buy Now</a>
+    </div>
 
-<script>
-    let currentLang = 'ar';
-    
-    function toggleDropdown() {
-        const dropdown = document.getElementById('langDropdown');
-        dropdown.classList.toggle('show');
-    }
+    <!-- يمكنك تكرار النموذج أعلاه لكل نطاق بنفس التنسيق -->
 
-    function switchLang(lang, flag, name) {
-        const body = document.body;
-        const dropdown = document.getElementById('langDropdown');
-        const currentButton = document.querySelector('.lang-current');
-        
-        // Hide dropdown
-        dropdown.classList.remove('show');
-        
-        // Remove all language classes
-        body.className = body.className.replace(/\b(english|russian|chinese|japanese|hindi|hebrew|french|polish|portuguese|indonesian|spanish|italian)\b/g, '');
-        
-        // Update current language button
-        currentButton.innerHTML = `
-            <span class="lang-flag">${flag}</span>
-            <span class="lang-name">${name}</span>
-            <i class="fas fa-chevron-down"></i>
-        `;
-        
-        currentLang = lang;
-        
-        // Set direction and language
-        if (lang === 'ar' || lang === 'he') {
-            body.setAttribute('dir', 'rtl');
-        } else {
-            body.setAttribute('dir', 'ltr');
-        }
-        
-        body.setAttribute('lang', lang);
-        
-        // Add appropriate class
-        const langClasses = {
-            'ar': '',
-            'en': 'english',
-            'ru': 'russian', 
-            'zh': 'chinese',
-            'ja': 'japanese',
-            'hi': 'hindi',
-            'he': 'hebrew',
-            'fr': 'french',
-            'pl': 'polish',
-            'pt': 'portuguese',
-            'id': 'indonesian',
-            'es': 'spanish',
-            'it': 'italian'
-        };
-        
-        if (langClasses[lang]) {
-            body.classList.add(langClasses[lang]);
-        }
-        
-        // Update page title
-        const titles = {
-            'ar': 'نطاقات مميزة للبيع',
-            'en': 'Premium Domains for Sale',
-            'ru': 'Премиум домены на продажу',
-            'zh': '优质域名出售',
-            'ja': 'プレミアムドメイン販売',
-            'hi': 'प्रीमियम डोमेन बिक्री के लिए',
-            'he': 'דומיינים פרימיום למכירה',
-            'fr': 'Domaines Premium à Vendre',
-            'pl': 'Domeny Premium na Sprzedaż',
-            'pt': 'Domínios Premium à Venda',
-            'id': 'Domain Premium Dijual',
-            'es': 'Dominios Premium en Venta',
-            'it': 'Domini Premium in Vendita'
-        };
-        
-        document.title = titles[lang] || titles['ar'];
-    }
+    <div class="domain">
+      <h2>alsyf.com</h2>
+      <p>Strong Arabic identity – “السيف” means “the sword” in Arabic. Premium and powerful.</p>
+      <a class="buy-btn" href="https://afternic.com/domain/alsyf.com" target="_blank">Buy Now</a>
+    </div>
 
-    // Close dropdown when clicking outside
-    window.addEventListener('click', function(e) {
-        const dropdown = document.getElementById('langDropdown');
-        const switcher = document.querySelector('.lang-switcher');
-        
-        if (!switcher.contains(e.target)) {
-            dropdown.classList.remove('show');
-        }
-    });
+    <div class="domain">
+      <h2>cyberect.com</h2>
+      <p>Cybersecurity and protection vibes – great for tech startups.</p>
+      <a class="buy-btn" href="https://afternic.com/domain/cyberect.com" target="_blank">Buy Now</a>
+    </div>
 
-    // Smooth scrolling
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
+    <!-- أضف باقي النطاقات بنفس الشكل -->
 
-    // Initialize Arabic language
-    document.addEventListener('DOMContentLoaded', function() {
-        switchLang('ar', '🇸🇦', 'عربي');
-    });
-</script>
-```
+  </div>
+
+  <footer>
+    &copy; 2025 Adnan Domains. All rights reserved.
+  </footer>
 
 </body>
 </html>
