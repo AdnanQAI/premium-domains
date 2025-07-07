@@ -1,127 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Premium Domains by Adnan</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #111;
-      color: #fff;
-    }
-    header {
-      background: #000;
-      padding: 30px 20px;
-      text-align: center;
-      color: gold;
-    }
-    header h1 {
-      font-size: 2.5em;
-      margin: 0;
-    }
-    header p {
-      font-size: 1.1em;
-      color: #ccc;
-    }
-    .container {
-      max-width: 960px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-    .domain {
-      background: #1b1b1b;
-      margin-bottom: 20px;
-      padding: 20px;
-      border-left: 5px solid gold;
-      border-radius: 5px;
-      transition: background 0.3s;
-    }
-    .domain:hover {
-      background: #2a2a2a;
-    }
-    .domain h2 {
-      margin: 0;
-      font-size: 1.5em;
-      color: gold;
-    }
-    .domain p {
-      color: #aaa;
-      margin: 10px 0;
-    }
-    .buy-btn {
-      display: inline-block;
-      background: gold;
-      color: #000;
-      padding: 10px 15px;
-      border-radius: 4px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    footer {
-      text-align: center;
-      color: #777;
-      padding: 40px 0;
-      border-top: 1px solid #333;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Premium Domains by Adnan</title>
+<style>
+  body { margin:0; font-family:Arial,sans-serif; background:#111; color:#eee; }
+  header { background:#000; padding:20px; text-align:center; }
+  header h1 { margin:0; font-size:2rem; color:gold; }
+  .lang-switch { margin-top:10px; }
+  .lang-switch button { margin:0 5px; padding:5px 10px; border:none; cursor:pointer; border-radius:3px; }
+  .lang-switch button.active { background:gold; color:#000; }
+  .search-area { max-width:800px; margin:20px auto; text-align:center; }
+  .search-area input, .search-area select { padding:8px; margin:5px; border-radius:4px; border:1px solid #555; background:#222; color:#eee; }
+  .grid { display:grid; gap:15px; padding:20px; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); }
+  .domain { background:#1a1a1a; border-left:5px solid gold; padding:15px; border-radius:5px; transition:background.3s }
+  .domain:hover { background:#2a2a2a; }
+  .domain h2 { margin:0 0 5px; color:gold; font-size:1.2rem; }
+  .domain p { margin:0 0 10px; color:#bbb; font-size:0.95rem; }
+  .domain .btn { display:inline-block; padding:8px 12px; background:gold; color:#000; border:none; border-radius:4px; text-decoration:none; font-weight:bold; }
+  footer { text-align:center; padding:30px; border-top:1px solid #333; color:#777; margin-top:40px; }
+</style>
 </head>
 <body>
 
-  <header>
-    <h1>Adnan’s Premium Domains</h1>
-    <p>Exclusive, brandable, and powerful domains for your next venture</p>
-  </header>
-
-  <div class="container">
-
-    <!-- Repeat this block for each domain -->
-    <div class="domain">
-      <h2>taqe.net</h2>
-      <p>Short, brandable, perfect for Arabic or energy-related projects.</p>
-      <a class="buy-btn" href="https://afternic.com/domain/taqe.net" target="_blank">Buy Now</a>
-    </div>
-
-    <div class="domain">
-      <h2>25u.net</h2>
-      <p>Ultra-short domain — perfect for students or digital platforms.</p>
-      <a class="buy-btn" href="https://afternic.com/domain/25u.net" target="_blank">Buy Now</a>
-    </div>
-
-    <div class="domain">
-      <h2>acnn.net</h2>
-      <p>Media-ready domain inspired by CNN. Ideal for news or broadcast sites.</p>
-      <a class="buy-btn" href="https://afternic.com/domain/acnn.net" target="_blank">Buy Now</a>
-    </div>
-
-    <div class="domain">
-      <h2>add111.com</h2>
-      <p>Memorable numeric branding – ideal for advertising or tracking platforms.</p>
-      <a class="buy-btn" href="https://afternic.com/domain/add111.com" target="_blank">Buy Now</a>
-    </div>
-
-    <!-- يمكنك تكرار النموذج أعلاه لكل نطاق بنفس التنسيق -->
-
-    <div class="domain">
-      <h2>alsyf.com</h2>
-      <p>Strong Arabic identity – “السيف” means “the sword” in Arabic. Premium and powerful.</p>
-      <a class="buy-btn" href="https://afternic.com/domain/alsyf.com" target="_blank">Buy Now</a>
-    </div>
-
-    <div class="domain">
-      <h2>cyberect.com</h2>
-      <p>Cybersecurity and protection vibes – great for tech startups.</p>
-      <a class="buy-btn" href="https://afternic.com/domain/cyberect.com" target="_blank">Buy Now</a>
-    </div>
-
-    <!-- أضف باقي النطاقات بنفس الشكل -->
-
+<header>
+  <h1 data-lang-key="title">Adnan’s Premium Domains</h1>
+  <div class="lang-switch">
+    <button data-lang="en" class="active">🇬🇧 English</button>
+    <button data-lang="ar">🇸🇦 عربي</button>
+    <button data-lang="fr">🇫🇷 Français</button>
+    <button data-lang="es">🇪🇸 Español</button>
   </div>
+</header>
 
-  <footer>
-    &copy; 2025 Adnan Domains. All rights reserved.
-  </footer>
+<div class="search-area">
+  <input type="text" id="searchInput" placeholder="Search domains…" data-lang-placeholder="search" />
+  <select id="extFilter">
+    <option value="all">All extensions</option>
+    <option value=".com">.com</option>
+    <option value=".net">.net</option>
+  </select>
+  <select id="catFilter">
+    <option value="all" data-lang-option-all="allCats">All categories</option>
+    <option value="arabic" data-lang-option-arabic="arabic">Arabic</option>
+    <option value="tech" data-lang-option-tech="tech">Tech</option>
+    <option value="numeric" data-lang-option-numeric="numeric">Numeric</option>
+  </select>
+  <button onclick="filterDomains()" data-lang-key="btnSearch">Search</button>
+</div>
+
+<div class="grid" id="domainsGrid"></div>
+
+<footer><span data-lang-key="footer">© 2025 Adnan Domains. All rights reserved.</span></footer>
+
+<script>
+const domains = [
+  { name:'taqe.net', desc:{en:'Short, brandable, ideal for Arabic/energy.',ar:'نطاق قصير وجذاب، مثالي مشاريع عربية/طاقة.',fr:'Court et marquant, idéal pour l’énergie.',es:'Corto y memorable, ideal para energía.'}, ext:'.net', cat:'arabic', url:'https://afternic.com/domain/taqe.net' },
+  { name:'25u.net', desc:{en:'Ultra-short domain for digital platforms.',ar:'نطاق قصير جدًا للمنصات الرقمية.',fr:'Domaine ultra‑court pour plateformes.',es:'Dominio ultra‑corto para plataformas.'}, ext:'.net', cat:'numeric', url:'https://afternic.com/domain/25u.net' },
+  // ... أضف بقية النطاقات بنفس التنسيق ...
+];
+
+const translations = {
+  en: { title:'Adnan’s Premium Domains', search:'Search domains…', btnSearch:'Search', footer:'© 2025 Adnan Domains. All rights reserved.' },
+  ar: { title:'نطاقات عدنان المميزة', search:'ابحث عن نطاق...', btnSearch:'بحث', footer:'© 2025 جميع الحقوق محفوظة لدى عدنان.' },
+  fr: { title:'Domaines Premium d\'Adnan', search:'Rechercher des domaines…', btnSearch:'Rechercher', footer:'© 2025 Adnan Domains. Tous droits réservés.' },
+  es: { title:'Dominios Premium de Adnan', search:'Buscar dominios…', btnSearch:'Buscar', footer:'© 2025 Adnan Domains. Todos los derechos reservados.' },
+};
+
+let currentLang = 'en';
+
+function renderDomains(list){
+  const grid = document.getElementById('domainsGrid');
+  grid.innerHTML = '';
+  list.forEach(d=>{
+    const div = document.createElement('div'); div.className='domain';
+    const h2 = document.createElement('h2'); h2.textContent = d.name;
+    const p = document.createElement('p'); p.textContent = d.desc[currentLang];
+    const a = document.createElement('a'); a.href = d.url; a.target='_blank'; a.className='btn';
+    a.textContent = translations[currentLang].btnSearch;
+    div.append(h2,p,a);
+    grid.append(div);
+  });
+}
+
+function filterDomains(){
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  const ext = document.getElementById('extFilter').value;
+  const cat = document.getElementById('catFilter').value;
+  const filtered = domains.filter(d=>{
+    return (!q || d.name.includes(q)) &&
+           (ext==='all' || d.ext===ext) &&
+           (cat==='all' || d.cat===cat);
+  });
+  renderDomains(filtered);
+}
+
+function switchLang(lang){
+  currentLang=lang;
+  document.querySelectorAll('[data-lang-key]').forEach(el=>el.textContent=translations[lang][el.dataset.langKey]);
+  document.querySelectorAll('[data-lang-placeholder]').forEach(el=>el.placeholder=translations[lang].search);
+  document.querySelectorAll(`[data-lang-option-${currentLang}]`).forEach(opt=>opt.textContent=translations[lang][opt.dataset.langOptionAll || opt.dataset[`langOption${opt.dataset.langOptionAll?.charAt(0).toUpperCase()+opt.dataset.langOptionAll?.slice(1)}`]);
+  renderDomains(domains);
+  document.querySelectorAll('.lang-switch button').forEach(btn=>btn.classList.toggle('active', btn.dataset.lang===lang));
+}
+
+document.querySelectorAll('.lang-switch button').forEach(btn => {
+  btn.onclick = ()=>switchLang(btn.dataset.lang);
+});
+
+window.onload = () => { renderDomains(domains); };
+</script>
 
 </body>
 </html>
