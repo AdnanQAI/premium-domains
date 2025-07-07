@@ -2,73 +2,178 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Domain2Cart - Home</title>
+  <title>Adnan Domains | Domain2Cart</title>
+  <meta name="description" content="Buy premium domains instantly on Sedo & Afternic. Explore top-tier names for your business.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background: #0f0f0f;
+      color: #f1f1f1;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0; padding: 0;
+    }
+    header, footer {
+      background: #1c1c1c;
+      padding: 20px;
+      text-align: center;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    nav a {
+      color: #4db8ff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #00ccff;
+    }
+    .lang-switch button {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      margin: 5px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .search-box {
+      text-align: center;
+      margin: 20px auto;
+    }
+    .search-box input {
+      padding: 10px;
+      width: 80%;
+      max-width: 400px;
+      border-radius: 6px;
+      border: none;
+      outline: none;
+      font-size: 1em;
+    }
+    main {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .domain-card {
+      background-color: #1e1e1e;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0, 204, 255, 0.2);
+      transition: transform 0.3s ease;
+    }
+    .domain-card:hover {
+      transform: translateY(-5px);
+    }
+    .domain-card h2 {
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+    .domain-card a {
+      margin: 5px 10px;
+      display: inline-block;
+      background: #00b7ff;
+      padding: 8px 14px;
+      color: #000;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    footer p {
+      margin: 10px 0;
+      color: #aaa;
+    }
+    footer img {
+      margin-top: 10px;
+    }
+  </style>
+
+  <!-- Google Ads -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6818905588211828" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LM3MBVM4VW"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag(){ dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-LM3MBVM4VW');
   </script>
-  <style>
-    body { margin: 0; font-family: Arial; background: #111; color: #fff; }
-    nav { background: #222; padding: 10px; display: flex; justify-content: center; gap: 20px; }
-    nav a { color: #4fc3f7; text-decoration: none; }
-    .languages { text-align: center; margin: 15px; }
-    .languages button { margin: 5px; padding: 8px 12px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
-    .domain-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; padding: 20px; }
-    .domain-card { background: #1e1e1e; padding: 15px; border-radius: 8px; width: 250px; text-align: center; }
-    .domain-card h3 { margin: 0.5em 0; }
-    .domain-card a { display: inline-block; margin: 5px; padding: 6px 10px; background: #4fc3f7; color: white; border-radius: 4px; text-decoration: none; }
-  </style>
 </head>
+
 <body>
+
+<header>
   <nav>
-    <a href="index.html" data-lang="en">Home</a>
-    <a href="about.html" data-lang="en">About Us</a>
-    <a href="privacy.html" data-lang="en">Privacy</a>
-    <a href="contact.html" data-lang="en">Contact</a>
-
-    <a href="index.html" data-lang="ar" style="display:none">الرئيسية</a>
-    <a href="about.html" data-lang="ar" style="display:none">من نحن</a>
-    <a href="privacy.html" data-lang="ar" style="display:none">الخصوصية</a>
-    <a href="contact.html" data-lang="ar" style="display:none">اتصل بنا</a>
-
-    <a href="index.html" data-lang="fr" style="display:none">Accueil</a>
-    <a href="about.html" data-lang="fr" style="display:none">À propos</a>
-    <a href="privacy.html" data-lang="fr" style="display:none">Confidentialité</a>
-    <a href="contact.html" data-lang="fr" style="display:none">Contact</a>
+    <ul>
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="privacy.html" class="nav-link">Privacy</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
   </nav>
 
-  <div class="languages">
-    <button onclick="switchLang('en')">English</button>
-    <button onclick="switchLang('ar')">العربية</button>
-    <button onclick="switchLang('fr')">Français</button>
+  <div class="lang-switch">
+    <button onclick="setLang('en')">English</button>
+    <button onclick="setLang('ar')">العربية</button>
+    <button onclick="setLang('fr')">Français</button>
   </div>
 
-  <div class="domain-grid" id="domainList"></div>
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search domain..." onkeyup="filterDomains()" />
+  </div>
+</header>
 
-  <script>
-    const domains = ["taqe.net","25u.net","acnn.net","add111.com","add222.com","add555.com","add600.net",
-                     "aadtv.com","co8.net","alsyf.com","cyberect.com","headerme.com","es8.net",
-                     "horyya.com","isrest.com","isvez.com","iw8.net"];
-    const domainList = document.getElementById('domainList');
-    domains.forEach(domain => {
-      domainList.innerHTML += `
-        <div class="domain-card">
-          <h3>${domain}</h3>
-          <a href="https://sedo.com/search/details/?domain=${domain}" target="_blank">Sedo</a>
-          <a href="https://www.afternic.com/domain/${domain}" target="_blank">Afternic</a>
-        </div>`;
+<main id="domainList">
+  <!-- مثال دومين -->
+  <div class="domain-card" data-domain="taqe.net">
+    <h2>taqe.net</h2>
+    <a href="https://sedo.com/search/details/?domain=taqe.net" target="_blank">Sedo</a>
+    <a href="https://afternic.com/domain/taqe.net" target="_blank">Afternic</a>
+  </div>
+  <div class="domain-card" data-domain="25u.net">
+    <h2>25u.net</h2>
+    <a href="https://sedo.com/search/details/?domain=25u.net" target="_blank">Sedo</a>
+    <a href="https://afternic.com/domain/25u.net" target="_blank">Afternic</a>
+  </div>
+  <div class="domain-card" data-domain="acnn.net">
+    <h2>acnn.net</h2>
+    <a href="https://sedo.com/search/details/?domain=acnn.net" target="_blank">Sedo</a>
+    <a href="https://afternic.com/domain/acnn.net" target="_blank">Afternic</a>
+  </div>
+  <!-- أضف باقي النطاقات هنا بنفس الشكل -->
+</main>
+
+<footer>
+  <p>&copy; <span id="year"></span> Domain2Cart.com – All rights reserved</p>
+  <img src="https://www.free-website-hit-counter.com/c.php?d=9&id=140438&s=11" alt="Visitor Counter">
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  function filterDomains() {
+    const input = document.getElementById("searchInput").value.toLowerCase();
+    const cards = document.querySelectorAll(".domain-card");
+    cards.forEach(card => {
+      const name = card.getAttribute("data-domain");
+      card.style.display = name.includes(input) ? "block" : "none";
     });
-    function switchLang(lang) {
-      document.querySelectorAll('[data-lang]').forEach(el => {
-        el.style.display = (el.getAttribute('data-lang') === lang) ? '' : 'none';
-      });
-    }
-    switchLang('en');
-  </script>
+  }
+
+  function setLang(lang) {
+    alert("Language switching coming soon: " + lang);
+    // يمكن لاحقًا ربطها بملفات ترجمة حقيقية أو redirection
+  }
+</script>
+
 </body>
 </html>
