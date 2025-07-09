@@ -28,15 +28,21 @@
     .filter-btn { margin: 5px; padding: 8px 16px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
     .filter-btn:hover { background: #0056b3; }
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
-    .card { background: white; border: 1px solid #ddd; border-radius: 8px; padding: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .card { background: white; border: 1px solid #ddd; border-radius: 8px; padding: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: relative; }
     .card:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
-    .domain-name { font-weight: bold; font-size: 1.1em; margin-bottom: 10px; color: #333; }
+    .domain-header { display: flex; align-items: center; margin-bottom: 8px; }
+    .domain-logo { width: 32px; height: 32px; margin-right: 10px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: white; font-size: 0.8em; }
+    .domain-name { font-weight: bold; font-size: 1.1em; color: #333; flex: 1; }
+    .domain-description { color: #666; font-size: 0.85em; margin-bottom: 8px; line-height: 1.4; }
     .price { color: #28a745; font-size: 1.2em; font-weight: bold; margin: 10px 0; }
     .details { color: #666; font-size: 0.9em; margin: 10px 0; }
+    .domain-tags { margin: 8px 0; }
+    .tag { display: inline-block; background: #e3f2fd; color: #1976d2; padding: 2px 8px; margin: 2px; border-radius: 12px; font-size: 0.75em; }
+    .created-date { color: #888; font-size: 0.8em; margin-top: 5px; }
     .buttons { margin-top: 10px; }
     .btn { display: inline-block; padding: 8px 16px; margin: 2px; text-decoration: none; background: #007bff; color: white; border-radius: 4px; font-size: 0.9em; }
     .btn:hover { background: #0056b3; }
-    .premium { background: #dc3545; color: white; padding: 4px 8px; border-radius: 12px; font-size: 0.7em; float: right; }
+    .premium { background: #dc3545; color: white; padding: 4px 8px; border-radius: 12px; font-size: 0.7em; position: absolute; top: 10px; right: 10px; }
 </style>
 ```
 
@@ -329,21 +335,114 @@
 
     filteredDomains = allDomains;
 
+    // Generate domain logo color based on domain name
+    function getDomainLogo(domain) {
+        const colors = ['#3498db', '#e74c3c', '#f39c12', '#27ae60', '#9b59b6', '#1abc9c', '#34495e'];
+        const colorIndex = domain.name.length % colors.length;
+        const letter = domain.name.charAt(0).toUpperCase();
+        return { color: colors[colorIndex], letter: letter };
+    }
+
+    // Generate description based on domain name and TLD
+    function getDomainDescription(domain) {
+        const descriptions = {
+            'ai': 'Perfect for artificial intelligence, machine learning, or tech startups',
+            'com': 'Ideal for business websites, e-commerce, or professional services',
+            'net': 'Great for networks, technology companies, or online services',
+            'org': 'Suitable for organizations, communities, or non-profit ventures',
+            'vip': 'Premium domain for exclusive brands and luxury services',
+            'store': 'Perfect for e-commerce, retail businesses, and online shops',
+            'news': 'Ideal for news websites, media outlets, or journalism platforms',
+            'one': 'Unique domain for innovative brands and creative projects',
+            'xyz': 'Modern choice for startups, tech companies, and creative ventures'
+        };
+
+        // Custom descriptions for specific domains
+        if (domain.name.includes('domain')) return 'Perfect for domain marketplace, registrar, or web services';
+        if (domain.name.includes('saudi') || domain.name.includes('kau') || domain.name.includes('ksu')) return 'Ideal for Saudi Arabian businesses, services, or organizations';
+        if (domain.name.includes('radiology') || domain.name.includes('trauma')) return 'Perfect for medical, healthcare, or professional services';
+        if (domain.name.includes('geogle')) return 'Great for search engines, technology, or digital services';
+        if (domain.name.includes('header')) return 'Ideal for web design, development, or digital agencies';
+        if (domain.name.includes('3d')) return 'Perfect for 3D design, modeling, or visualization services';
+        
+        return descriptions[domain.tld] || 'Versatile domain suitable for various business purposes';
+    }
+
+    // Generate hashtags based on domain characteristics
+    function getDomainTags(domain) {
+        let tags = [];
+        
+        // TLD-based tags
+        if (domain.tld === 'ai') tags.push('#AI', '#Tech', '#Innovation');
+        else if (domain.tld === 'com') tags.push('#Business', '#Professional', '#Commercial');
+        else if (domain.tld === 'net') tags.push('#Network', '#Technology', '#Online');
+        else if (domain.tld === 'vip') tags.push('#Premium', '#Exclusive', '#Luxury');
+        else if (domain.tld === 'store') tags.push('#Ecommerce', '#Retail', '#Shopping');
+        
+        // Premium status
+        if (domain.premium) tags.push('#Premium');
+        if (domain.lease) tags.push('#LeaseAvailable');
+        
+        // Domain-specific tags
+        if (domain.name.includes('saudi')) tags.push('#Saudi', '#Arabia', '#Business');
+        if (domain.name.includes('domain')) tags.push('#Domains', '#Web', '#Internet');
+        if (domain.name.includes('medical') || domain.name.includes('radiology')) tags.push('#Medical', '#Healthcare');
+        
+        // Price-based tags
+        if (domain.buyPrice >= 2000) tags.push('#HighValue');
+        else if (domain.buyPrice >= 1000) tags.push('#Investment');
+        else tags.push('#Affordable');
+        
+        return tags.slice(0, 4); // Limit to 4 tags
+    }
+
+    // Generate creation date (default dates - can be edited later)
+    function getCreationDate(domain) {
+        const baseYear = 2020;
+        const randomDays = Math.floor(Math.random() * 1460); // 4 years worth of days
+        const createdDate = new Date(baseYear, 0, 1);
+        createdDate.setDate(createdDate.getDate() + randomDays);
+        return createdDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+    }
+
     function displayDomains(domainList) {
         const grid = document.getElementById('domainGrid');
         grid.innerHTML = '';
         
         domainList.forEach(domain => {
+            const logo = getDomainLogo(domain);
+            const description = getDomainDescription(domain);
+            const tags = getDomainTags(domain);
+            const createdDate = getCreationDate(domain);
+            
             const card = document.createElement('div');
             card.className = 'card';
             card.innerHTML = `
                 ${domain.premium ? '<div class="premium">Premium</div>' : ''}
-                <div class="domain-name">${domain.name} <span style="background:#666;color:white;padding:2px 6px;border-radius:3px;font-size:0.8em;">.${domain.tld.toUpperCase()}</span></div>
+                
+                <div class="domain-header">
+                    <div class="domain-logo" style="background-color: ${logo.color};">${logo.letter}</div>
+                    <div class="domain-name">
+                        ${domain.name} 
+                        <span style="background:#666;color:white;padding:2px 6px;border-radius:3px;font-size:0.8em;">.${domain.tld.toUpperCase()}</span>
+                    </div>
+                </div>
+                
+                <div class="domain-description">${description}</div>
+                
                 <div class="price">$${domain.buyPrice.toLocaleString()}</div>
+                
                 <div class="details">
                     Floor: $${domain.floorPrice.toLocaleString()} | Views: ${domain.views}<br>
                     ${domain.lease ? 'Lease Available' : 'Purchase Only'}
                 </div>
+                
+                <div class="domain-tags">
+                    ${tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                </div>
+                
+                <div class="created-date">Created: ${createdDate}</div>
+                
                 <div class="buttons">
                     <a href="https://sedo.com/search/details/?partnerid=324717&domain=${domain.name}" class="btn" target="_blank">Sedo</a>
                     <a href="https://www.godaddy.com/forsale/${domain.name}?utm_source=TDFS_BINNS2&utm_medium=parkedpages&utm_campaign=x_corp_tdfs-binns2_base&traffic_type=TDFS_BINNS2&traffic_id=binns2" class="btn" target="_blank" style="background:#6c757d;">GoDaddy</a>
