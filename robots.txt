@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /*.php
+Disallow: /parking*
+Disallow: /search/
 
 Sitemap: https://domain2cart.com/sitemap.xml
